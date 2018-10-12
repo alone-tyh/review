@@ -182,8 +182,7 @@
 		}
 		else{
 			targetTime.setDate(nowTime.getDate()+1);
-			targetTime=new Date(nowTime.getFullYear(),nowTime.getMonth(),nowTime.getDate(),22);
-			timeValue=targetTime.getTime()-nowTime.getTime();
+            timeValue=targetTime.getTime()-nowTime.getTime();
 			var hour=parseInt(timeValue/1000/60/60);
 			var min=parseInt(timeValue/1000/60-(hour*60));
 			var sec=parseInt(timeValue/1000-(hour*60+min)*60);
@@ -192,4 +191,146 @@
 			$('.box-sec').html(sec<10?"0"+sec:sec);
 		}
 	},900)
+})();
+
+/****分类切换*********/
+(function(){
+	$('.tab-list').children("li").on("mouseenter",function(){
+			$(this).parent().children().removeClass("tab-active");
+			$(this).addClass("tab-active");
+			$(this).parents('div.home-brick-box').find('ul.tab-content').removeClass('tab-content-active');
+			$(this).parents('div.home-brick-box').find('ul.tab-content').eq($(this).parent().children().index($(this))).addClass('tab-content-active')
+		}
+	)
+})();
+
+/****隐藏标签展示*****/
+(function(){
+	$('.brick-item-m').hover(
+		function(){
+		$(this).addClass('brick-item-m-active');
+	},
+	function(){
+		$(this).removeClass('brick-item-m-active');
+	}) 
+})();
+
+
+/*********为你推荐翻页*******/
+(function(){
+	
+	$('.home-recm-box').find('a.control-pre').on('click',function(){
+		var nowmargin=parseInt($('.carousel-list').css("margin-left"));
+		if(nowmargin>=0){
+			$('.control').removeClass('control-disabled');
+			$('.control-pre').addClass('control-disabled');
+		}
+		else{
+			$('.control').removeClass('control-disabled');
+			$('.carousel-list').css('margin-left',nowmargin+1240);
+			if((nowmargin+1240)%1240!=0){                  //防止加速过快导致位置错乱
+				$('.carousel-list').css('margin-left',parseInt((nowmargin+1240)/1240)*(1240));
+			}
+			if(nowmargin+1240>=0){
+				$('.control').removeClass('control-disabled');
+			    $('.control-pre').addClass('control-disabled');
+			    $('.carousel-list').css('margin-left',0);
+			}
+		}
+	})
+	$('.home-recm-box').find('a.control-next').on('click',function(){
+		var nowmargin=parseInt($('.carousel-list').css("margin-left"));
+		if(nowmargin<=-3720){
+			$('.control').removeClass('control-disabled');
+			$('.control-next').addClass('control-disabled');
+		}
+		else{
+			$('.control').removeClass('control-disabled');
+			$('.carousel-list').css('margin-left',nowmargin-1240);
+			if((nowmargin-1240)%1240!=0){                   //防止加速过快导致位置错乱     多减1为了连续点击出现卡顿的情况
+				$('.carousel-list').css('margin-left',parseInt((nowmargin-1240)/1240-1)*(1240));
+			}
+			if(nowmargin-1240<=-3720){
+				$('.control').removeClass('control-disabled');
+			    $('.control-next').addClass('control-disabled');
+			    $('.carousel-list').css('margin-left',-3720);
+			}
+		}
+	})
+})();
+/*********内容翻页*********/
+(function(){
+	$('.home-content-box').find('a.control-pre').on('click',function(){
+		var this_ul=$(this).parent().siblings('div.carousel-wrapper').children('ul.item-list')
+		var nowmargin=parseInt(this_ul.css('margin-left'));
+		if(nowmargin<=0){
+			nowmargin+=296;
+			if((nowmargin)%296!=0){
+				nowmargin=parseInt(nowmargin/296)*296;
+			}
+			if(nowmargin>=0){
+				nowmargin=0
+			}
+			this_ul.css('margin-left',nowmargin);
+		}
+		$(this).parent().siblings('div.pagers-wrapper').find('li').removeClass('pager-active');
+		$(this).parent().siblings('div.pagers-wrapper').find('li').eq(Math.abs(nowmargin/296)).addClass('pager-active')
+		
+	})
+	$('.home-content-box').find('a.control-next').on('click',function(){
+		var this_ul=$(this).parent().siblings('div.carousel-wrapper').children('ul.item-list')
+		var nowmargin=parseInt(this_ul.css('margin-left'));
+		if(nowmargin>=(this_ul.children('li').length-1)*-296){
+			nowmargin-=296;
+			if(nowmargin%296!=0){
+				nowmargin=parseInt(nowmargin/296-1)*296;
+			}
+			if(nowmargin<=(this_ul.children('li').length-1)*-296){
+				nowmargin=(this_ul.children('li').length-1)*-296;
+			}
+			this_ul.css('margin-left',nowmargin);
+		}
+		$(this).parent().siblings('div.pagers-wrapper').find('li').removeClass('pager-active');
+		$(this).parent().siblings('div.pagers-wrapper').find('li').eq(Math.abs(nowmargin/296)).addClass('pager-active')
+	})
+})();
+
+
+/******侧栏条响应******/
+(function(){
+	var w=document.documentElement.clientWidth||document.body.clientWidth;
+	    if(w>=1460){
+	    	$('.home-right-bar').removeClass('home-right-bar-show-s');
+	    	$('.bar-s').css('display','none');
+	    	$('.bar-l').css('display','block');
+	    }
+	    else{
+	    	$('.home-right-bar').addClass('home-right-bar-show-s');
+	    	$('.bar-s').css('display','block');
+	    	$('.bar-l').css("display",'none');
+	    }
+	window.onresize=function(){
+		var w=document.documentElement.clientWidth||document.body.clientWidth;
+	     if(w>=1460){
+	    	$('.home-right-bar').removeClass('home-right-bar-show-s');
+	    	$('.bar-s').css('display','none');
+	    	$('.bar-l').css('display','block');
+	    }
+	    else{
+	    	$('.home-right-bar').addClass('home-right-bar-show-s');
+	    	$('.bar-s').css('display','block');
+	    	$('.bar-l').css("display",'none');
+	    }
+	}
+	
+	$(window).on('scroll',function(){
+		if($(window).scrollTop()>=100){
+			$('.bar-totop').css('display','block');
+		}
+		else{
+			$('.bar-totop').css('display','none');
+		}
+//		console.log($(window).scrollTop());
+	})
+
 })();
