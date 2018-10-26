@@ -1,0 +1,1106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+html {
+    height: 100%;
+    margin-top: 40px !important;
+    transition: all .2s ease;
+    overflow: scroll;
+    @media only screen and (max-width: 767px) {
+        margin-top: 44px !important;
+    }
+}
+
+body {
+    height: 100%;
+    border-top: 1px solid transparent;
+    margin-top: -1px;
+    position: relative;
+    font-size: 17px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.clearfloat {
+    zoom: 1;
+    &:before {
+        display: table;
+        clear: both;
+        content: "";
+    }
+    &:after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+}
+
+.adv-wrapper {
+    position: absolute;
+    background-color: #444;
+    line-height: 1;
+    top: -40px;
+    width: 100%;
+    right: 0;
+    height: 40px;
+    @media only screen and (max-width: 767px) {
+        top: -44px;
+        height: 44px;
+    }
+    @media only screen and (max-width:1023px) {
+        min-width: 20%;
+    }
+    .adv-wrapper-text {
+        color: #a8a8aa;
+        font-size: 12px;
+        display: block;
+        line-height: 40px;
+        overflow: hidden;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        text-align: right;
+        max-width: 976px;
+        margin: 0 auto;
+        @media only screen and(max-width: 767px) {
+            line-height: 44px;
+            margin-left: auto;
+            padding: 0 16px;
+            position: relative;
+            left: 0;
+        }
+        @media only screen and (max-width:1023px) {
+            padding: 0 22px;
+            margin-left: auto;
+            position: relative;
+            left: 0;
+        }
+    }
+}
+
+.ac-globalnav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+    display: block;
+    width: 100%;
+    min-width: 1024px;
+    height: 48px;
+    max-height: 44px;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 17px;
+    &.small-shownav {
+        height: 100%;
+        background-color: #000000;
+        transition: background .36s cubic-bezier(0.32, 0.08, 0.24, 1), height .56s cubic-bezier(0.52, 0.16, 0.24, 1);
+    }
+    @media only screen and (max-width: 767px) {
+        overflow-y: hidden;
+        max-height: none;
+        transition: background .44s .2s cubic-bezier(0.52, 0.16, 0.24, 1), height .56s cubic-bezier(0.52, 0.16, 0.24, 1);
+    }
+    @media only screen and (max-width:1044px) {
+        min-width: 320px;
+    }
+    .ac-gn-content {
+        margin: 0 auto;
+        max-width: 988px;
+        padding: 0 22px;
+        position: relative;
+        z-index: 2;
+        @media only screen and (max-width: 767px) {
+            padding: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .ac-gn-herder {
+            display: none;
+            position: absolute;
+            z-index: 5;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            overflow: hidden;
+            @media only screen and (max-width: 767px) {
+                display: block;
+            }
+            .ac-gn-item {
+                height: 48px;
+            }
+            .ac-gn-apple {
+                position: absolute;
+                width: 48px;
+                top: 0;
+                left: 50%;
+                margin-left: -24px;
+                text-align: center;
+                z-index: 1;
+                @media only screen and (max-width: 767px) {
+                    display: block;
+                }
+                .ac-gn-link {
+                    color: #FFFFFF;
+                    position: relative;
+                    display: inline-block;
+                    padding: 0 10px;
+                    opacity: 1;
+                    background: no-repeat;
+                    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+                    background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/apple/image_large.svg');
+                    background-position: center center;
+                    width: 16px;
+                    height: 48px;
+                    &:hover {
+                        opacity: .65;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        background-size: 18px 48px;
+                        background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/apple/image_small.svg') no-repeat;
+                        background-position: center;
+                    }
+                }
+            }
+        }
+        .ac-gn-search-placeholder-container {
+            display: block;
+            position: absolute;
+            z-index: 4;
+            top: 48px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0 10px 0 10px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 3.11765em;
+            background: transparent;
+            visibility: hidden;
+            background: #000;
+            border-bottom: 1px solid #282828;
+            @media only screen and (max-width: 767px) {
+                background-color: #000000;
+                visibility: visible;
+            }
+            .ac-gn-search-small {
+                height: 2.11765em;
+                .ac-gn-search-placeholder-bar {
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    z-index: 3;
+                    max-width: 584px;
+                    margin: 0 auto;
+                    overflow: hidden;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 5px;
+                    .ac-gn-search-placeholder-input-text {
+                        padding-left: 30px;
+                        display: block;
+                        line-height: 2.117em;
+                        border-bottom: none;
+                        box-sizing: border-box;
+                        width: 100%;
+                        height: 2.11765em;
+                        color: #999;
+                        cursor: text;
+                        .ac-gn-search-placeholder-input-icon {
+                            background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/search/image_small.svg')no-repeat;
+                            background-size: 16px 16px;
+                            left: 0;
+                            position: absolute;
+                            width: 32px;
+                            height: 2.117em;
+                            background-position: left 8px center;
+                        }
+                        .ac-gn-search-placeholder {
+                            font-size: 17px;
+                            line-height: 1.23543;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ac-gn-item {
+        box-sizing: border-box;
+        display: inline-block;
+        position: relative;
+        height: 44px;
+        z-index: 1;
+        vertical-align: top;
+        @media only screen and (max-width: 767px) {
+            width: 100%;
+            height: 48px;
+        }
+    }
+    .ac-gn-menuicon {
+        left: 0;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        width: 48px;
+        border-bottom: none;
+        transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        &:hover {
+            opacity: .65;
+        }
+        .ac-gn-menuicon-bread {
+            position: absolute;
+            z-index: 3;
+            top: 9px;
+            left: 9px;
+            width: 30px;
+            height: 30px;
+            &.ac-gn-menuicon-bread-top {
+                transition: transform .1806s;
+                transform: none;
+                z-index: 4;
+            }
+            &.ac-gn-menuicon-bread-bottom {
+                transition: transform .1806s;
+                transform: none;
+            }
+            .ac-gn-menuicon-bread-crust {
+                display: block;
+                width: 17px;
+                height: 1px;
+                background-color: #FFFFFF;
+                position: absolute;
+                left: 7px;
+                z-index: 1;
+                &.ac-gn-menuicon-bread-crust-top {
+                    top: 14px;
+                    transform: translateY(-3px);
+                    transition: transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s, -webkit-transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
+                }
+                &.ac-gn-menuicon-bread-crust-bottom {
+                    bottom: 14px;
+                    transform: translateY(3px);
+                    transition: transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s, -webkit-transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
+                }
+            }
+        }
+        &.ac-gn-menuicon-active {
+            .ac-gn-menuicon-bread {
+                &.ac-gn-menuicon-bread-top {
+                    transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s, -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                    transform: rotate(45deg);
+                    z-index: 4;
+                    .ac-gn-menuicon-bread-crust-top {
+                        transform: none;
+                    }
+                }
+                &.ac-gn-menuicon-bread-bottom {
+                    transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s, -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                    transform: rotate(-45deg);
+                    .ac-gn-menuicon-bread-crust-bottom {
+                        transform: none;
+                    }
+                }
+            }
+        }
+    }
+    .ac-gn-bag {
+        @media only screen and (max-width: 767px) {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: auto;
+            z-index: 1;
+        }
+        .ac-gn-link {
+            color: #FFFFFF;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            background: no-repeat;
+            background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/bag/image_large.svg');
+            width: 14px;
+            height: 48px;
+            background-position: center center;
+            transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            &:hover {
+                opacity: .65;
+            }
+            @media only screen and (max-width: 767px) {
+                background-size: 16px 48px;
+                background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/bag/image_small.svg') no-repeat;
+                background-position: center;
+                padding: 0 16px;
+                opacity: 1;
+            }
+        }
+    }
+    .ac-gn-list {
+        cursor: default;
+        margin: 0 -10px;
+        width: auto;
+        height: 44px;
+        display: flex;
+        justify-content: space-between;
+        @media only screen and (max-width: 767px) {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 3.6em;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            max-width: 664px;
+            margin: 0 auto;
+            padding: 45px 40px 8px;
+            height: auto;
+            box-sizing: border-box;
+            overflow-y: auto;
+            visibility: hidden;
+            //          transition: visibility 0s linear 1s;
+        }
+        .ac-gn-item {
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+            height: 44px;
+            z-index: 1;
+            vertical-align: top;
+            .ac-gn-link {
+                font-size: 14px;
+                line-height: 3;
+                font-weight: 400;
+                color: #FFFFFF;
+                position: relative;
+                z-index: 1;
+                padding: 0 10px;
+                height: 44px;
+                opacity: 1;
+                background: no-repeat;
+                white-space: nowrap;
+                transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+                &:hover {
+                    opacity: 0.65;
+                }
+            }
+            &.ac-gn-apple {
+                .ac-gn-link {
+                    background-size: 16px 44px;
+                    background-repeat: no-repeat;
+                    background-image: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/apple/image_large.svg');
+                    background-position: center center;
+                    width: 16px;
+                }
+            }
+            &.ac-gn-watch {
+                .ac-gn-link {
+                    opacity: .65;
+                    &:hover {
+                        opacity: .65;
+                    }
+                }
+            }
+            &.ac-gn-search {
+                .ac-gn-link {
+                    background-size: 16px 44px;
+                    background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/search/image_large.svg') no-repeat;
+                    background-position: center center;
+                    width: 16px;
+                }
+            }
+            &.ac-gn-bag {
+                .ac-gn-link {
+                    background-size: 14px 44px;
+                    background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/bag/image_large.svg') no-repeat;
+                    background-position: center center;
+                    width: 14px;
+                }
+            }
+            .ac-gn-link-text {
+                color: rgba(255, 255, 255, 1);
+                font-size: 13px;
+                font-weight: 300;
+            }
+        }
+        &.ac-gn-list-search {
+            .ac-gn-item {
+                visibility: hidden;
+                &.ac-gn-apple {
+                    visibility: visible;
+                }
+            }
+        }
+        &.ac-gn-list-small-list {
+            visibility: visible;
+            .ac-gn-item {
+                border-bottom: 1px solid #282828;
+                .ac-gn-link {
+                    font-size: 17px;
+                    line-height: 44px;
+                    .ac-gn-link-text {
+                        font-size: 17px;
+                        font-weight: 100;
+                    }
+                }
+            }
+            .ac-gn-item.ac-gn-apple {
+                display: none;
+            }
+            .ac-gn-item.ac-gn-search {
+                display: none;
+            }
+        }
+    }
+    .ac-gn-searchview {
+        display: none;
+        .ac-gn-searchview-content {
+            position: absolute;
+            top: 0;
+            left: 16.66%;
+            width: 66.666%;
+            height: 100vh;
+            z-index: 3;
+            .ac-gn-searchform-wrapper {
+                height: 44px;
+                line-height: 44px;
+                padding-left: 40px;
+                position: relative;
+                z-index: 2;
+                max-width: 584px;
+                .ac-gn-search-close {
+                    display: none;
+                }
+                .ac-gn-searchform-input {
+                    overflow: hidden;
+                    font-size: 17px;
+                    white-space: normal;
+                    text-overflow: ellipsis;
+                    line-height: 1.29;
+                    color: #FFFFFF;
+                    outline: none;
+                    width: 100%;
+                    border: none;
+                    background-color: transparent;
+                }
+                .ac-gn-searchform-sumbit {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    width: 40px;
+                    height: 40px;
+                    background: url('https://www.apple.com/ac/globalnav/4/zh_CN/images/globalnav/search/image_large.svg') no-repeat;
+                    background-position: 10px 50%;
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+            .ac-gn-searchresults {
+                font-size: 14px;
+                line-height: 2;
+                font-weight: 400;
+                background-color: #FFFFFF;
+                border-top: none;
+                color: #888;
+                overflow-x: hidden;
+                overflow-y: auto;
+                //              margin: 0 40px;
+                padding: 24px 40px 18px;
+                .as-gn-searchresults-header {
+                    font-size: 11px;
+                    line-height: 1;
+                    color: #888;
+                }
+                .ac-gn-searchresults-list {
+                    list-style: none;
+                    padding-top: 5px;
+                    .ac-gn-searchresults-item {
+                        margin: 6px -32px;
+                        .ac-gn-searchresults-link {
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            display: block;
+                            padding: 0 48px;
+                            text-decoration: none;
+                            color: #333333;
+                        }
+                    }
+                }
+            }
+        }
+        .ac-gn-searchview-close {
+            position: absolute;
+            right: 9px;
+            z-index: 3;
+            width: 38px;
+            height: 44px;
+            top: 0;
+            opacity: 1;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            border: none;
+            background-color: transparent;
+            .ac-gn-searchview-close-wrapper {
+                display: block;
+                width: 100%;
+                height: 100%;
+                .ac-gn-searchview-close-left {
+                    width: 1px;
+                    height: 18px;
+                    background-color: #FFFFFF;
+                    display: block;
+                    position: absolute;
+                    top: 11px;
+                    z-index: 1;
+                    transform: rotate(-45deg);
+                    right: 12px;
+                    transform-origin: 0 100%;
+                }
+                .ac-gn-searchview-close-right {
+                    width: 1px;
+                    height: 18px;
+                    background-color: #FFFFFF;
+                    position: absolute;
+                    display: block;
+                    top: 11px;
+                    z-index: 1;
+                    transform: rotate(45deg);
+                    left: 12px;
+                    transform-origin: 100% 100%;
+                }
+            }
+        }
+        &.ac-gn-searchview-small {
+            display: block;
+            .ac-gn-searchview-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                bottom: 0;
+                right: 0;
+                z-index: 5;
+                background-color: #000000;
+                .ac-gn-searchview-bar {
+                    background-color: #000000;
+                    border-bottom: 1px solid #282828;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: auto;
+                    padding: .94118em 10px;
+                    position: relative;
+                    z-index: 2;
+                    .ac-gn-searchform-wrapper {
+                        display: flex;
+                        justify-content: center;
+                        max-width: 584px;
+                        margin: 0 auto;
+                        height: auto;
+                        padding: 0;
+                        .ac-gn-searchform {
+                            width: 100%;
+                            display: block;
+                            height: 2.11765em;
+                            line-height: 2.11765em;
+                            position: relative;
+                            z-index: 2;
+                            max-width: 584px;
+                            background-color: #282828;
+                            border-radius: 4px;
+                            right: auto;
+                            .ac-gn-searchform-input {
+                                height: 1em;
+                                width: calc(100% - (30px * 2));
+                                padding: 10px 30px 9px;
+                                font-weight: 400;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                        .ac-gn-search-close {
+                            display: block;
+                            position: relative;
+                            width: auto;
+                            height: 36px;
+                            padding: 0 8px;
+                            line-height: 36px;
+                            margin-left: 10px;
+                            right: auto;
+                            top: 0;
+                            color: #FFFFFF;
+                            .ac-gn-search-close-cancel {
+                                font-size: 15px;
+                                line-height: 1.23543;
+                                font-weight: 400;
+                                color: #6bf;
+                                white-space: nowrap;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .ac-gn-searchresults {
+                    background-color: #000000;
+                    margin: 0 auto;
+                    padding: 19px 40px 15px 40px;
+                    max-width: 584px;
+                    .as-gn-searchresults-header {
+                        color: #999999;
+                        font-size: 11px;
+                        line-height: 1;
+                    }
+                    .ac-gn-searchresults-list {
+                        padding-top: 8px;
+                        list-style: none;
+                        .ac-gn-searchresults-item {
+                            z-index: 3;
+                            margin: 0;
+                            .ac-gn-searchresults-link {
+                                color: #FFFFFF;
+                                height: 43px;
+                                line-height: 43px;
+                                position: relative;
+                                padding: 0;
+                                font-size: 12px;
+                                .ac-gn-searchresults-link-border {
+                                    height: 1px;
+                                    width: 100%;
+                                    background-color: #282828;
+                                    display: block;
+                                    position: absolute;
+                                    bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ac-gn-curtain {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+}
+
+.chapternav {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-bottom: 0px solid #000000;
+    padding-bottom: 20px;
+    overflow: hidden;
+    padding-top: 12px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 92px;
+    z-index: 9987;
+    .chapternav-wrapper {
+        position: relative;
+        height: 100%;
+        z-index: 1;
+        .chapternav-items {
+            list-style: none;
+            margin: 0 34px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 50px;
+            white-space: nowrap;
+            .chapternav-item {
+                display: inline-block;
+                vertical-align: top;
+                position: relative;
+                transition: transform 0.5s ease-out;
+                &.chapternav-item-first {
+                    margin-left: 0;
+                    padding-left: 4px;
+                }
+                .chapternav-icon {
+                    width: 100%;
+                    height: 54px;
+                    background-repeat: no-repeat;
+                    margin-bottom: 3px;
+                    background: center bottom no-repeat;
+                    margin: 0 auto;
+                }
+                .chapternav-label {
+                    white-space: normal;
+                    max-width: 7em;
+                    line-height: 1.2;
+                    font-size: 11px;
+                    font-weight: 400;
+                    display: inline-block;
+                    margin: 0;
+                    letter-spacing: 0em;
+                }
+                .chapternav-new {
+                    font-size: 9px;
+                    line-height: 1.22226;
+                    font-weight: 400;
+                    color: #e85d00;
+                    display: block;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                }
+            }
+        }
+        .chapternav-paddle {
+            font-size: 20px;
+            line-height: 1.5;
+            font-weight: 300;
+            letter-spacing: 0em;
+            border: 0 solid rgba(17, 17, 17, 0.2);
+            color: rgba(17, 17, 17, 0.2);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+            text-align: center;
+            width: 33px;
+            transition: opacity 150ms ease-out;
+            background: none;
+            height: 100%;
+            outline: none;
+            &.chapternav-paddle-left {
+                border-right-width: 1px;
+                left: 0;
+                &:after {
+                    content: "<";
+                    color: inherit;
+                    display: inline-block;
+                }
+            }
+            &.chapternav-paddle-right {
+                border-left-width: 1px;
+                right: 0;
+                &:after {
+                    content: ">";
+                    color: inherit;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+.main {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    .series-four-hero {
+        max-width: 100%;
+        position: relative;
+        .hero-figure-container {
+            background-color: #fafafa;
+            margin-top: 0;
+            .image-hero-series-four {
+                width: 526px;
+                height: 948px;
+                background-size: 526px 948px;
+                background: url('https://www.apple.com/cn/watch/home/images/hero_large.jpg');
+                left: 50%;
+                margin-left: -249px;
+                position: relative;
+                @media only screen and (max-width: 1068px) {
+                    width: 360px;
+                    height: 645px;
+                    background-size: 360px 645px;
+                    background-repeat: no-repeat;
+                    background-image: url('https://www.apple.com/cn/watch/home/images/hero_medium.jpg');
+                    left: 50%;
+                    margin-left: -168px;
+                    position: relative;
+                }
+                @media only screen and (max-width: 735px) {
+                    width: 273px;
+                    height: 490px;
+                    background-size: 273px 490px;
+                    background-repeat: no-repeat;
+                    background-image: url('https://www.apple.com/cn/watch/home/images/hero_small.jpg');
+                    left: 50%;
+                    margin-left: -128.5px;
+                    position: relative;
+                }
+            }
+        }
+        .text-block {
+            width: 100%;
+            background-color: #FFFFFF;
+            padding-top: 150px;
+            padding-bottom: 162px;
+            @media only screen and (max-width: 1068px) {
+                padding: 95px 0 105px;
+            }
+            @media only screen and (max-width: 735px) {
+                padding: 84px 0 90px;
+            }
+            .logo-model {
+                padding-right: 13px;
+                @media only screen and (max-width: 1068px) {
+                    padding-right: 8px;
+                }
+                @media only screen and (max-width: 735px) {
+                    padding-right: 4px;
+                }
+                .series-4-logo {
+                    width: 275px;
+                    height: 106px;
+                    background-size: 100% 100%;
+                    margin: 0 auto;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-image: url('https://www.apple.com/v/watch/home/k/images/watch_series_4_logo_large.png');
+                    @media only screen and (max-width: 1068px) {
+                        width: 189px;
+                        height: 74px;
+                        background-image: url('https://www.apple.com/v/watch/home/k/images/watch_series_4_logo_medium.png');
+                    }
+                    @media only screen and (max-width: 735px) {
+                        width: 136px;
+                        height: 54px;
+                        background-image: url('https://www.apple.com/v/watch/home/k/images/watch_series_4_logo_small.png');
+                    }
+                }
+                .available-more-links {
+                    display: inline-block;
+                    margin-top: .8em;
+                    text-decoration: none;
+                    color: #0070c9;
+                    margin-left: 0.4em;
+                    margin-right: 0.4em;
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+    .section-jump-tiles {
+        margin: 0 auto;
+        max-width: 1440px;
+        @media only screen and (max-width: 735px) {
+            max-width: 414px;
+        }
+        .jump-tiles-list {
+            list-style: none;
+            margin-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+            @media only screen and (max-width: 1068px) {
+                margin: 0 20px 20px;
+            }
+            @media only screen and (max-width: 735px) {
+                margin: 0 auto 15px;
+            }
+            .jump-tile-block {
+                max-width: 50%;
+                box-sizing: border-box;
+                flex-basis: 50%;
+                position: relative;
+                overflow: hidden;
+                @media only screen and (max-width: 735px) {
+                    margin: 0 auto 15px;
+                    flex-basis: 100%;
+                    max-width: 100%;
+                    padding-right: 0;
+                }
+                &:nth-child(odd) {
+                    border-right: 15px solid #FFFFFF;
+                    @media only screen and (max-width: 1068px) {
+                        border-right: 10px solid #FFFFFF;
+                    }
+                    @media only screen and (max-width: 735px) {
+                        border-right: none;
+                    }
+                }
+                &:nth-child(even) {
+                    border-left: 15px solid #FFFFFF;
+                    @media only screen and (max-width: 1068px) {
+                        border-left: 10px solid #FFFFFF;
+                    }
+                    @media only screen and (max-width: 735px) {
+                        border-left: none;
+                    }
+                }
+                &:nth-child(1) {
+                    border-bottom: 15px solid #fff;
+                    @media only screen and (max-width: 1068px) {
+                        border-bottom: 10px solid #fff;
+                    }
+                    @media only screen and (max-width: 735px) {
+                        border-bottom: none;
+                    }
+                    .jump-tile-bg {
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        padding-bottom: 100%;
+                        background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/health_static_large.jpg');
+                        @media only screen and (max-width: 1068px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/health_static_medium.jpg');
+                        }
+                        @media only screen and (max-width: 735px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/health_static_small.jpg');
+                        }
+                    }
+                }
+                &:nth-child(2) {
+                    border-bottom: 15px solid #fff;
+                    @media only screen and (max-width: 1068px) {
+                        border-bottom: 10px solid #fff;
+                    }
+                    @media only screen and (max-width: 735px) {
+                        border-bottom: none;
+                    }
+                    .jump-tile-bg {
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        padding-bottom: 100%;
+                        background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/workout_static_large.jpg');
+                        @media only screen and (max-width: 1068px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/workout_static_medium.jpg');
+                        }
+                        @media only screen and (max-width: 735px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/workout_static_small.jpg');
+                        }
+                    }
+                }
+                &:nth-child(3) {
+                    border-top: 15px solid #fff;
+                    @media only screen and (max-width: 1068px) {
+                        border-top: 10px solid #fff;
+                    }
+                    @media only screen and (max-width: 735px) {
+                        border-top: none;
+                    }
+                    .jump-tile-bg {
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        padding-bottom: 100%;
+                        background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/activity_static_large.jpg');
+                        @media only screen and (max-width: 1068px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/activity_static_medium.jpg');
+                        }
+                        @media only screen and (max-width: 735px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/activity_static_small.jpg');
+                        }
+                    }
+                }
+                &:nth-child(4) {
+                    border-top: 15px solid #fff;
+                    @media only screen and (max-width: 1068px) {
+                        border-top: 10px solid #fff;
+                    }
+                    @media only screen and (max-width: 735px) {
+                        border-top: none;
+                    }
+                    .jump-tile-bg {
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        padding-bottom: 100%;
+                        background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/connect_static_large.jpg');
+                        @media only screen and (max-width: 1068px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/connect_static_medium.jpg');
+                        }
+                        @media only screen and (max-width: 735px) {
+                            background-image: url('https://www.apple.com/v/watch/home/k/images/jump-tiles/connect_static_small.jpg');
+                        }
+                    }
+                }
+                .jump-tile-dark-layer {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0.2;
+                    transition: opacity 0.4s;
+                    background-color: black;
+                    z-index: 2;
+                }
+                &:hover {
+                    .jump-tile-dark-layer {
+                        opacity: 0.3;
+                    }
+                }
+                .jump-tile-copy {
+                    width: 100%;
+                    z-index: 2;
+                    text-align: left;
+                    position: absolute;
+                    top: 28%;
+                    .typography-headline-jump {
+                        max-width: 362px;
+                        padding-left: 15%;
+                        font-size: 56px;
+                        line-height: 1.07143;
+                        font-weight: 700;
+                        color: #fff;
+                        text-align: left;
+                    }
+                    .typography-intro-elevated {
+                        max-width: 80%;
+                        padding-left: 15%;
+                        display: inline-block;
+                        color: #FFFFFF;
+                    }
+                    @media only screen and (max-width: 1068px) {
+                        top: 29%;
+                        .typography-headline-jump {
+                            max-width: 214px;
+                            font-size: 32px;
+                            line-height: 1.125;
+                            font-weight: 700;
+                        }
+                        .typography-intro-elevated {
+                            margin-top: 22px;
+                            font-size: 21px;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    @media only screen and (max-width: 735px) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        .typography-headline-jump {
+                            max-width: 208px;
+                        }
+                        .typography-intro-elevated {
+                            margin-top: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
