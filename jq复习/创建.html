@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			.div1{
+				height: 100px;
+				width: 100px;
+				background: black;
+			}
+			.duang{
+				margin-left: 200px;
+				transition: all .5s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<script type="text/javascript">
+				$.prototype.extend({
+					duang : function(){
+						var me=this;
+						setInterval(function(){
+							$(me).toggleClass('duang');
+						},200)
+					}
+				})
+				$('.div1').duang();
+		</script>
+	</body>
+</html>
