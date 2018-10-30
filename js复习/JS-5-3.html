@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				height: 100px;
+				width: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<input type="text" name="input1" id="input1" value="" />
+		<script type="text/javascript">
+			var oDiv=document.getElementById('div1');
+			var oBtn=document.getElementById('input1');
+			var a1=function(){
+				console.log('触发成功');
+			}
+//			oDiv.addEventListener('mousedown',a1);     //鼠标摁下就出发
+//			oDiv.addEventListener('mouseup',a1);			//鼠标抬起就触发
+//			oDiv.addEventListener('mouseover',a1);		//鼠标覆盖就触发
+//			oDiv.addEventListener('mousewheel',a1);			//鼠标在div上  滚轮就触发
+//			oDiv.addEventListener('mousemove',a1);				//鼠标在上面移动就触发
+//			oDiv.addEventListener('mouseenter',a1);				//鼠标进入div就触发
+			oDiv.addEventListener('mouseleave',a1);				//鼠标进入后离开就触发
+			document.addEventListener('keyup',a1);
+//			oBtn.addEventListener('focus',a1);	//选中输入框是触发
+//			oBtn.addEventListener('blur',a1);			//选中输入框后拿出来触发
+			oBtn.addEventListener('input',a1);			//在输入框中输入内容时触发
+		</script>
+	</body>
+</html>
