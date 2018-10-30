@@ -1,19 +1,3 @@
-/*********购物车界面**********/
-(function() {
-	$('#topbar-cart').hover(
-		function() {
-			$(this).addClass('topbar-cart topbar-cart-active');
-			$('.cart-menu').html('<div class="loading">购物车中还没有商品，赶紧选购吧！</div>')
-			$('.cart-menu').slideDown(400);
-
-		},
-		function() {
-			$(this).removeClass('topbar-cart-active');
-			$('.cart-menu').slideUp(400);
-		}
-	)
-})();
-
 /*****头部导航菜单**********/
 (function() {
 	var time = null;
@@ -248,26 +232,206 @@ $(window).on('scroll', function() {
 		$('.options-list.sheng').addClass('hide');
 		city($(this).attr('data-sheng'), $(this).html());
 	});
-	
-	$('.select-item.sheng').on('click',function(){
+
+	$('.select-item.sheng').on('click', function() {
 		$('.options-list').addClass('hide');
 		$('.options-list.sheng').removeClass('hide');
 		$('.select-item').addClass('hide');
 		$(this).html('选择省份/自治区').removeClass('active').removeClass('hide');
 	})
-	
-	$('.select-item.di').on('click',function(){
+
+	$('.select-item.di').on('click', function() {
 		$('.options-list').addClass('hide');
 		$('.options-list.di').removeClass('hide');
 		$('.select-item').addClass('hide');
 		$('.select-item.sheng').removeClass('hide');
 		$(this).html('选择城市/地区').removeClass('active').removeClass('hide');
 	})
-	
-	$('.select-item.xian').on('click',function(){
+
+	$('.select-item.xian').on('click', function() {
 		$('.options-list').addClass('hide');
 		$('.options-list.xian').removeClass('hide');
 		$(this).html('选择区县').removeClass('active').removeClass('hide');
 	})
 
+})();
+
+/*******版本选择********/
+(function() {
+	$('.step-list').children('li.btn-biglarge').on('click', function() {
+		var me_this = this;
+		var data_name = $(me_this).attr('data-name');
+		var data_price = $(me_this).attr('data-price');
+		$('.step-list').children('li.btn-biglarge').removeClass('active');
+		$(this).addClass('active');
+		$('.pro-price').children('span.price').html($(me_this).attr('data-price'));
+		$('.pro-list').find('li:nth-child(1)').html(`${data_name}<span>${data_price}</span>`)
+		$('.pro-list').find('li.totlePrice').html(`总计 ：${data_price}`);
+	})
+
+})();
+
+var setStorage = function(key, value) {
+	if(!window.localStorage) {
+		alert('该浏览器不支持localstorage');
+		return false;
+	} else {
+		var storage = window.localStorage;
+		storage.setItem(key, value);
+	}
+};
+
+var getStorage = function(key) {
+	if(!window.localStorage) {
+		alert('该浏览器不支持localstorage');
+		return false;
+	} else {
+		var storage = window.localStorage;
+		return storage.getItem(key);
+	}
+};
+
+var removeStorage = function(key) {
+	if(!window.localStorage) {
+		alert('该浏览器不支持localstorage');
+		return false;
+	} else {
+		var storage = window.localStorage;
+		storage.removeItem(key);
+	}
+};
+
+var cartUpdata = function() {
+	if(getStorage('cartInfo')) {
+		var cartInfo = JSON.parse(getStorage('cartInfo'));
+		if(cartInfo.length > 0) {
+			var str_start = `<ul class="cart-list">`;
+			var str_end = `</ul>
+						<div class="cart-total clearfix">
+							<span class="total">
+								共<em>1</em>件商品
+								<span class="price">
+									<em>7999</em>
+									元
+								</span>
+							</span>
+							<a href="#" class="btn-cart">去购物车结算</a>
+						</div>`;
+			var str_content = '';
+			var total_num = 0;
+			var total_price = 0;
+			cartInfo.forEach(function(item) {
+				str_content += `<li>
+								<div class="cart-item clearfix">
+									<a href="#" class="thumb">
+										<img src="${item.data_img}"/>
+									</a>
+									<a href="#" class="name">${item.data_name}</a>
+									<span class="price">${item.data_price}元 × ${item.num}</span>
+									<a href="javascript:" class="btn-del">
+										<i class="iconfont"></i>
+									</a>
+								</div>
+							</li>`;
+				total_num += item.num;
+				total_price += item.data_price * item.num;
+			})
+			$('.cart-menu').html(str_start + str_content + str_end);
+			$('.cart-mini-num').html(`(${total_num})`);
+			$('.cart-total').children('span.total').children('em').html(total_num);
+			$('.cart-total').find('span.price').children('em').html(total_price);
+			$('.cart-mini').css({
+				'background': '#ff6700',
+				'color': '#ffffff'
+			}).children('i.iconfont').html('');
+			$('.cart-menu').find('a.btn-del').on('click', function() {
+				var delIndex = null;
+				var me_this = this;
+				cartInfo.forEach(function(item, index) {
+					if(item.data_name == $(me_this).siblings('a.name').html()) {
+						item.num -= 1;
+						if(item.num <= 0) {
+							delIndex = index;
+							return
+						}
+					}
+				})
+				if(typeof(delIndex)=='number') {
+					cartInfo.splice(delIndex, 1);
+				}
+				setStorage('cartInfo', JSON.stringify(cartInfo));
+				cartUpdata();
+			})
+		} else {
+			$('.cart-menu').html('<div class="loading">购物车中还没有商品，赶紧选购吧！</div>')
+			$('.cart-mini').css({
+				'background': '',
+				'color': ''
+			}).children('i.iconfont').html('');
+			$('.cart-mini-num').html(`(0)`);
+		}
+
+	}
+};
+
+cartUpdata();
+
+/*******购物车添加********/
+(function() {
+	$('.btn-primary').on('click', function() {
+		var me_name = $('.step-list').children('li.active').attr('data-name');
+		var me_price = parseInt($('.step-list').children('li.active').attr('data-price'));
+		if(getStorage('cartInfo')) {
+			var cartInfo = JSON.parse(getStorage('cartInfo'));
+			var isSame = false;
+			cartInfo.forEach(function(item) {
+				if(item.data_name == me_name && item.data_price == me_price) {
+					item.num += 1;
+					isSame = true;
+				}
+			})
+			if(!isSame) {
+				cartInfo.push({
+					'data_name': me_name,
+					'data_img': 'https://i1.mifile.cn/a1/pms_1533196200.13174382.jpg?width=60&height=60',
+					'data_price': me_price,
+					'num': 1
+				});
+			}
+			setStorage('cartInfo', JSON.stringify(cartInfo));
+			cartUpdata();
+		} else {
+			var cartInfo = [{
+				'data_name': me_name,
+				'data_img': 'https://i1.mifile.cn/a1/pms_1533196200.13174382.jpg?width=60&height=60',
+				'data_price': me_price,
+				'num': 1
+			}]
+			setStorage('cartInfo', JSON.stringify(cartInfo));
+			cartUpdata();
+		}
+		var htmlUrl = window.location.origin + window.location.pathname.replace('/index.html', '/index2.html');
+		window.location.href = htmlUrl;
+	})
+})();
+
+/*********购物车界面**********/
+
+(function() {
+	$('#topbar-cart').hover(
+		function() {
+			if(getStorage('cartInfo')) {
+				cartUpdata();
+			} else {
+				$('.cart-menu').html('<div class="loading">购物车中还没有商品，赶紧选购吧！</div>')
+			}
+			$(this).addClass('topbar-cart topbar-cart-active');
+			$('.cart-menu').slideDown(400);
+
+		},
+		function() {
+			$(this).removeClass('topbar-cart-active');
+			$('.cart-menu').slideUp(400);
+		}
+	)
 })();
