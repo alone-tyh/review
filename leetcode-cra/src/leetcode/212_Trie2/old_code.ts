@@ -1,4 +1,4 @@
-export function findWords(board: Array<Array<string>>, words: string[]): string[] {
+function findWords(board: Array<Array<string>>, words: string[]): string[] {
     const trie: TrieNode = { children: {} };
     let result: string[] = [];
 
@@ -80,7 +80,7 @@ const chackAround = (board: string[][], i: number, j: number, trie: TrieNode, pa
 
     if (count <= 0) return result;
 
-    // 有一个结果产生 应该回归时才去计算答案
+    // 有一个结果产生
     if (word && !children[curStr].isChecked) {
         result.push(word);
         children[curStr].isChecked = true;
@@ -139,3 +139,5 @@ const chackAround = (board: string[][], i: number, j: number, trie: TrieNode, pa
 
     return result;
 }
+
+export default findWords;

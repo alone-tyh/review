@@ -1,25 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { findWords } from './script';
-import findWOrds2 from './script/index2';
-import { testData } from './testData/212-trie2';
+import { leetcode } from './leetcode';
 
 function App() {
+  const onceRef = useRef(false);
 
   useEffect(() => {
-    console.log('啊啊啊')
-    // const arg = testData[7]
-    // console.log('参数', arg);
-    // const res = findWOrds2(arg.bord, arg.word);
-    // console.log('最终结果', res);
-    console.time()
-    testData.forEach((arg, index) => {
-      console.log('参数', index, arg);
-      const res = findWOrds2(arg.bord, arg.word);
-      console.log('最终结果--' + index, res);
-    })
-    console.timeEnd()
+    if (onceRef.current) return;
+    onceRef.current = true;
+    leetcode();
   }, [])
 
 
